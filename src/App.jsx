@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -59,7 +59,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       {/* Pass the theme state and toggle function to the Header */}
       <Header darkMode={darkMode} toggleTheme={toggleTheme} /> 
       
@@ -78,7 +78,7 @@ function App() {
       </div>
 
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
