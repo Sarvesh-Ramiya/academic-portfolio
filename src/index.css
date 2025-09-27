@@ -248,3 +248,65 @@ h1, h2, h3 {
 .page-content a {
   color: var(--color-primary) !important;
 }
+
+.mobile-controls {
+  display: none; /* Hide mobile controls on desktop */
+}
+.mobile-menu {
+  display: none; /* Keep the mobile menu links hidden */
+}
+.desktop-nav-container {
+  display: flex; /* Ensure desktop nav and toggle button are in a row */
+  align-items: center;
+}
+
+/* 2. Mobile Layout (Screen width 768px or less) */
+@media (max-width: 768px) {
+  
+  /* Hide the full navigation and desktop toggle button */
+  .desktop-nav-container {
+      display: none; 
+  }
+  
+  /* Show the mobile controls (hamburger + toggle button) */
+  .mobile-controls {
+      display: flex;
+      align-items: center;
+  }
+  
+  /* Mobile Navigation: Stack links vertically and hide by default */
+  .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      
+      /* Positioning: Makes the menu slide down over the content */
+      position: absolute;
+      top: 40px; /* Adjusted based on header height (10px padding + 20px height) */
+      left: 0;
+      width: 100%;
+      
+      /* Styling: Match the dark, hacker aesthetic */
+      background-color: #000000; 
+      border-top: 2px solid var(--color-primary);
+      padding: 20px 0;
+      
+      /* Start hidden and transition for a smooth slide effect */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      z-index: 999;
+  }
+  
+  /* Show the menu when the 'open' class is toggled */
+  .mobile-menu.open {
+      max-height: 300px; /* Must be larger than content */
+  }
+  
+  /* Apply vertical spacing to the links inside the mobile menu */
+  .mobile-menu a {
+      padding: 10px 30px; /* Padding for easier tapping */
+      text-align: left;
+      margin: 0 !important; /* Override inline margin */
+      font-size: 1.1rem; /* Slightly larger text for mobile readability */
+  }
+}
