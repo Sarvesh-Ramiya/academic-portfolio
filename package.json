@@ -2,7 +2,7 @@
   "name": "academic-portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://Sarvesh-Ramiya.github.io/Sarvesh-Ramiya.github.io/",
+  "homepage": "https://Sarvesh-Ramiya.github.io/academic-portfolio/",
   "type": "module",
   "scripts": {
     "dev": "vite",
