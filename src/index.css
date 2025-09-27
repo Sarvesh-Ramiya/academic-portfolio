@@ -305,7 +305,6 @@ h1, h2, h3 {
     /* Ensure the text icon stays centered within the fixed box */
     text-align: center;
   }
-}
   
   /* Mobile Navigation: Stack links vertically and hide by default */
   .mobile-menu {
