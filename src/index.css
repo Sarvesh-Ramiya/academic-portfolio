@@ -262,7 +262,6 @@ h1, h2, h3 {
 
 /* 2. Mobile Layout (Screen width 768px or less) */
 @media (max-width: 768px) {
-  
 
   /* Ensure the mobile controls container only takes up the space it needs */
   .mobile-controls {
@@ -284,17 +283,28 @@ h1, h2, h3 {
   .mobile-controls {
     display: flex;
     align-items: center;
-    /* CRITICAL FIX 1: Allow the container to shrink to fit the buttons */
-    flex-shrink: 1; 
-    /* CRITICAL FIX 2: Ensure buttons don't take up full width of the container */
-    white-space: nowrap; 
+    justify-content: flex-end; /* Pushes the controls to the right edge */
+    width: auto;             /* Crucial: Container should only be as wide as its children */
   }
 
-  /* CRITICAL FIX 3: Target the button directly to ensure it stays compact */
+  /* Forces the hamburger button itself to be small */
   .hamburger-icon {
-    /* CRITICAL FIX 2: Re-assert the compact nature of the button */
-    width: auto !important; 
-    padding: 5px 10px; 
+    /* CRITICAL FIX 1: Set flex basis to 'content' to make it shrink-wrap */
+    flex-basis: content;
+    
+    /* CRITICAL FIX 2: Override any browser default stretching */
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+
+    width: 35px !important;  /* CRITICAL FIX 3: Give it a fixed, small width */
+    height: 35px !important; /* Ensure it stays a small square */
+    line-height: 35px !important; /* Center the icon vertically */
+    padding: 0 !important;      /* Remove all padding */
+    margin-left: 15px;         /* Maintain spacing from the toggle button */
+    
+    /* Ensure the text icon stays centered within the fixed box */
+    text-align: center;
+  }
 }
   
   /* Mobile Navigation: Stack links vertically and hide by default */
