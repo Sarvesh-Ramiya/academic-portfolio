@@ -263,6 +263,19 @@ h1, h2, h3 {
 /* 2. Mobile Layout (Screen width 768px or less) */
 @media (max-width: 768px) {
   
+
+  /* Ensure the mobile controls container only takes up the space it needs */
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    /* CRITICAL FIX 1: Explicitly tell it to align its items to the right end 
+       and not stretch the space between them unnecessarily. */
+    justify-content: flex-end; 
+    
+    /* Ensure it only takes up the necessary width */
+    width: auto; 
+}
+
   /* Hide the full navigation and desktop toggle button */
   .desktop-nav-container {
       display: none; 
@@ -279,13 +292,10 @@ h1, h2, h3 {
 
   /* CRITICAL FIX 3: Target the button directly to ensure it stays compact */
   .hamburger-icon {
-      /* Ensure the element only takes up the space needed for the text */
-      width: auto !important; 
-      height: auto !important;
-      padding: 5px 10px; /* Add slight padding to make it clickable */
-      /* Make the box model compact */
-      box-sizing: content-box; 
-  }
+    /* CRITICAL FIX 2: Re-assert the compact nature of the button */
+    width: auto !important; 
+    padding: 5px 10px; 
+}
   
   /* Mobile Navigation: Stack links vertically and hide by default */
   .mobile-menu {
