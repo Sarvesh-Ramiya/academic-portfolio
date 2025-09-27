@@ -268,10 +268,23 @@ h1, h2, h3 {
       display: none; 
   }
   
-  /* Show the mobile controls (hamburger + toggle button) */
   .mobile-controls {
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
+    /* CRITICAL FIX 1: Allow the container to shrink to fit the buttons */
+    flex-shrink: 1; 
+    /* CRITICAL FIX 2: Ensure buttons don't take up full width of the container */
+    white-space: nowrap; 
+  }
+
+  /* CRITICAL FIX 3: Target the button directly to ensure it stays compact */
+  .hamburger-icon {
+      /* Ensure the element only takes up the space needed for the text */
+      width: auto !important; 
+      height: auto !important;
+      padding: 5px 10px; /* Add slight padding to make it clickable */
+      /* Make the box model compact */
+      box-sizing: content-box; 
   }
   
   /* Mobile Navigation: Stack links vertically and hide by default */

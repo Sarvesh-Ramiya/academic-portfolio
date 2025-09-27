@@ -84,7 +84,9 @@ function Header({ darkMode, toggleTheme }) {
                   fontSize: '24px',
                   cursor: 'pointer',
                   zIndex: 1000,
-                  marginLeft: '15px' 
+                  marginLeft: '15px',
+                  // REMOVE any inline width/height or padding styles that might expand it
+                  // Let the CSS handle the precise sizing
               }}
             >
               {/* Display X when open, or the standard hamburger icon */}
@@ -103,7 +105,7 @@ function Header({ darkMode, toggleTheme }) {
               key={link.to} 
               to={link.to} 
               // Keep desktop style for color, but use CSS for padding/margin
-              style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 'bold' }}
+              style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}
               onClick={toggleMenu} // Close menu on click
             >
               {link.label}
