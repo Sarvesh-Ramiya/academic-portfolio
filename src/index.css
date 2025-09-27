@@ -1,0 +1,250 @@
+/* src/index.css */
+
+/* --- 1. CSS VARIABLES (Theme Definition) --- */
+/* --- 1. CSS VARIABLES (Theme Definition) --- */
+:root {
+  /* Light Theme (Default) - Green Accent over Light Gray */
+  --color-primary: #333;          /* BRIGHT NEON GREEN */
+  --color-secondary: #333;           /* Dark text color */
+  --color-background-main: white;    /* Main content background */
+  --color-background-secondary: #f4f4f4; /* Outer body background */
+  --color-background-card: #f9f9f9; 
+  --color-border: #007718;
+  --color-shadow: rgba(0, 255, 65, 0.25);
+}
+
+body.dark-mode {
+  /* Dark Theme Overrides - Green Accent over Black/Dark Gray */
+  --color-primary: white;          /* BRIGHT NEON GREEN */
+  --color-secondary: white;        /* Text color becomes neon green */
+  --color-background-main: #0A0A0A;  /* Near Black */
+  --color-background-secondary: #181818; /* Darker Gray */
+  --color-background-card: #181818; 
+  --color-border: #007718;           /* Dark green border */
+  --color-shadow: rgba(0, 255, 65, 0.25); /* Green glow shadow */
+}
+
+/* --- 2. LAYOUT FIXES AND GLOBAL STYLES (Apply Variables) --- */
+html, body, #root {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0; /* Ensures no default body margin is causing issues */
+}
+
+body {
+  margin: 0;
+  
+  /* CRITICAL CHANGE: Use a Monospace font stack */
+  font-family: 'Courier New', Courier, monospace; 
+  
+  line-height: 1.6;
+  color: var(--color-secondary); 
+  background-color: var(--color-background-secondary); 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+/* The wrapper handles centering and width-limiting for main content */
+.content-wrapper {
+  max-width: 1100px; 
+  margin: 0 auto; 
+  background-color: var(--color-background-main); 
+  box-shadow: 0 0 10px var(--color-shadow); 
+
+  /* CRITICAL FIX: Ensure content takes up minimum space to push footer down */
+  /* 100vh - (Header Est. 60px) - (Footer Est. 40px) = 100vh - 100px */
+  min-height: calc(100vh - 100px); 
+}
+
+
+/* --- HEADER/FOOTER CONTENT ALIGNMENT --- */
+header {
+  background-color: #1A1A1A !important; /* Use variable */
+  padding: 20px 0;
+}
+
+footer {
+  /* Set a solid black background */
+  background-color: #000000 !important; 
+  padding: 20px 0;
+  
+  /* Ensure text remains white/light for contrast */
+  color: white; 
+}
+
+
+.header-content, 
+.footer-content {
+  /* Retain width and centering for alignment with main content */
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 0 30px; 
+  
+  /* CRITICAL: These properties force the content into one row */
+  display: flex;             /* Must be present */
+  justify-content: space-between; 
+  align-items: center; 
+  flex-wrap: nowrap;         /* Ensures no wrapping */
+  
+  /* Prevents items from wrapping onto a new line */
+  flex-wrap: nowrap; 
+}
+
+header h1 {
+  margin: 0;
+  color: white;
+  font-size: 1.8rem;
+  text-align: left;
+}
+header a, footer a {
+  color: inherit; /* Inherit color for links in dark mode */
+}
+
+/* --- STANDARD SECTION STYLES --- */
+/* This targets the main content wrapper on each page */
+.page-content {
+  padding: 20px; /* Adds a uniform buffer around the content of the entire page */
+}
+
+/* This targets the individual sections (Hero, Education, Projects, etc.) on that page */
+.page-content section {
+  padding: 20px 10px; /* Reduced vertical padding, slight horizontal padding */
+  margin-bottom: 25px; /* Adds vertical space between sections */
+}
+
+h1, h2, h3 {
+  color: var(--color-primary); /* Use variable */
+}
+
+/* Specific styling for project/education borders */
+/* Ensures the border on the WorkExperience component uses the variable */
+#experience {
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Ensure the border on the Education component uses the variable */
+#education {
+  border-top: 1px solid var(--color-border) !important;
+}
+/* --- EDUCATION CARD STYLING --- */
+
+.education-card {
+  /* Box model */
+  padding: 20px;
+  border-radius: 8px; /* Smooth, modern corners */
+  border: 1px solid var(--color-border); /* Subtle border */
+  
+  /* Appearance */
+  background-color: var(--color-background-card); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light, initial shadow */
+  cursor: default;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; /* Smooth transitions */
+}
+
+.education-card:hover {
+  /* Make the hover state slightly lighter/different */
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 12px var(--color-shadow); 
+  
+  /* Change the hover color to contrast slightly with the new card color */
+  background-color: var(--color-background-secondary); 
+}
+
+/* Ensure headings inside the card stay styled */
+.education-card h4 {
+  color: var(--color-primary);
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.education-card p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* --- PROJECT CARD STYLING (Similar to Education Card) --- */
+
+.project-card {
+  /* Box model */
+  padding: 25px; /* Slightly more padding for a bigger feel */
+  border-radius: 8px; 
+  border: 1px solid var(--color-border); 
+  margin-bottom: 20px; /* Space between cards */
+  
+  /* Appearance */
+  background-color: var(--color-background-card); /* Uses the slightly lighter theme color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+  cursor: default;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.project-card:hover {
+  /* Lift the card slightly on hover */
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 12px var(--color-shadow); 
+  
+  /* Change the background slightly on hover */
+  background-color: var(--color-background-secondary); 
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+/* Cleanup: Remove the old dashed border and bottom padding */
+#projects article {
+    border-bottom: none !important; 
+    padding-bottom: 0 !important;
+}
+
+/* --- GENERAL CARD LINK HOVER EFFECT (Reuse for Academics) --- */
+.academic-card-link .project-card {
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.academic-card-link:hover .project-card {
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 12px var(--color-shadow); 
+  background-color: var(--color-background-secondary); 
+}
+
+/* --- BADGES/PILLS STYLE (For Coursework) --- */
+.coursework-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-badge {
+  display: inline-block;
+  /* CRITICAL CHANGE: Increase padding for a bigger pill size */
+  padding: 8px 14px; /* Increased from 6px 12px */
+  
+  border-radius: 20px; 
+  
+  /* OPTIONAL: Slightly increase font size */
+  font-size: 0.9rem; /* Increased from 0.85rem */
+  
+  font-weight: 500;
+  
+  background-color: var(--color-background-secondary); 
+  border: 1px solid var(--color-border);
+  color: var(--color-secondary); 
+}
+
+
+/* Optional: Icon Styling */
+.emoji-icon {
+  font-size: 1.1rem;
+  margin-left: 8px;
+}
+
+.page-content article,
+/* Reset border styles that may conflict with the new .education-card class */
+.page-content > div > div {
+  border: none !important; /* Remove the old inline/generic border */
+}
+.page-content a {
+  color: var(--color-primary) !important;
+}
